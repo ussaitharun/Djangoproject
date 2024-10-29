@@ -1,0 +1,87 @@
+{% extends 'cdheader.html' %}
+
+
+{% block login %}
+<style>
+    .details h2{
+        color:cornflowerblue;
+
+        
+
+    }
+    .details h2,p{
+        width:500px;
+        font-size:large;
+        opacity:0;
+        animation-name:passage;
+        animation-duration:1s;
+        animation-fill-mode:forwards;
+        transform:translateX(-10px);
+        
+    }
+    @keyframes passage {
+        50%{
+            opacity:0.4;
+        }
+        100%{
+            opacity:1;
+            transform:translateX(15px);
+            display:block;
+        }
+        
+    }
+    .all{
+        background-image:url('https://plus.unsplash.com/premium_photo-1664302152991-d013ff125f3f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YXV0b2J1c3xlbnwwfHwwfHx8MA%3D%3D');
+        background-size:cover;
+        background-position:center;
+    }
+    #login{
+        animation-name:passage;
+        animation-duration:1s;
+        animation-fill-mode:forwards;
+        transform:translateX(-10px);
+    }
+    p{
+        width:600px;
+        font-weight:bolder;
+        background-color:white;
+        border:1px solid black;
+        border-radius:0px 70px;
+        height:250px;
+        box-sizing:border-box;
+        box-shadow:3px 5px 10px inset;
+        padding:20px;
+    }
+    p::first-letter{
+        color:red;
+        font-size:30px;
+    }
+</style>
+<div class="all">
+<div class="details">
+    <h2  style="font-size:40px;border-left:10px solid red;padding-left:10px">clever devices</h2>
+    <p>Clever Devices is a technology company that specializes in providing intelligent transportation solutions primarily for public transit systems. Their focus is on developing systems that improve the efficiency, safety, and passenger experience of bus, rail, and other forms of public transportation. Clever Devices offers a range of solutions, which often incorporate advanced technologies such as GPS, telematics, and data analytics to help transit authorities optimize their operations.</p>
+</div>
+    <center>
+    <div id="login" name="login">
+        <h2>Login/sign-up</h2>
+
+        <form method="post" action="{% url 'userlogin' %}">
+            {% csrf_token %}
+            <h3>User id:</h3>
+            <input type="text" name="userid">
+            <h3>password:</h3>
+            <input type="password" name="password">
+            <br/>
+            <br/>
+            <input id="submit" type="submit" name="submit">
+
+        </form>
+
+    </div>
+</div>
+
+    </center>
+    {% endblock %}
+    
+    

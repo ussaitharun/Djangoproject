@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .alldetails{
+            border:0.2px solid black;
+            display:inline-block;
+            width:500px;
+            border-radius:20px;
+            box-shadow:5px 5px 10px black;
+            background-image:linear-gradient(to left,cornflowerblue,white);
+
+        }
+        h2{
+            text-transform:capitalize;
+            
+ }
+ #detail{
+    border-radius:10px;
+    border:1px solid black;
+    background-color:black;
+    color:white;
+    transition-duration:1s;
+    transition-timing-function:ease;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight:bolder;
+   }
+
+ h2::first-letter{
+    color:red
+ }
+ input{
+    border:2px solid black;
+    width:200px;
+    height:30px;
+    border-radius:10px;
+    background-color: black;
+    color:white;
+    transition-duration:1s;
+    transition-timing-function:ease;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight:bolder;
+ }
+ input:hover{
+    box-shadow:3px 3px 15px red;
+    transition-duration:0.5s;
+ }
+ textarea:hover{
+    box-shadow:3px 3px 15px red;
+    transition-duration:0.5s;
+
+ }
+ #note{
+   background-color:white;
+   display:inline-block;
+   border-radius:10px;
+
+ }
+    </style>
+</head>
+<body>
+    {% extends 'cdheader.html' %}
+    {% block login %}
+    <center>
+    <div class="alldetails">
+    <form action="{% url 'updatedetails' %}" method="post">
+        {% csrf_token %}
+    <h3 id="note">!!Note:you can edit product detail and percentage</h3>
+    <h2>product:name</h2>
+    <input type ="text" name="product_name" value="{{product_name}}" readonly></h2>
+    <h2>detail</h2>
+    <textarea id="detail" name="product_detail" rows="4" cols="50" >
+ {{product_detail}}
+    </textarea><br><br>
+    <h2>Learning_percentage</h2>
+    <input type="text" name="product_percentage" value="{{product_percentage}}" ></h2>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <input type="submit" value="submit">
+    </form>
+    </div>
+    </center>
+    {% endblock %}
+    
+</body>
+</html>

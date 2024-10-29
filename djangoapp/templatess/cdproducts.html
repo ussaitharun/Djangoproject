@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .alldetails{
+            display:flex;
+            justify-content:space-around;
+            margin-top:20px;
+            background-image:url('https://png.pngtree.com/background/20210711/original/pngtree-beautiful-hand-painted-blue-transportation-industry-background-picture-image_1146445.jpg');
+            background-position:center;
+            background-repeat:no-repeat;
+            background-size:cover;
+            box-sizing:border-box;
+            padding-top:40px;
+            
+        }
+        select{
+            border:0.2px solid black;
+            width:200px;
+            border-radius:10px;
+            height:50px;
+            background-color:cornflowerblue;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: larger;
+            color:white;
+            font-weight: bolder;
+            transform:ease;
+            transition-duration:0.3;
+            box-shadow:2px 5px 3px inset black;
+            text-align: center;
+            text-transform: capitalize;
+            text-shadow:1.2px 1.2px black;
+        }
+        select:hover{
+            background-color:black;
+            box-shadow:1px 1.5px 5px red;
+            transition-duration:0.2s;
+
+        }
+        #option1:hover{
+            transform:scale(1.02);
+        }
+        select option{
+            background-color:white;
+            color:cornflowerblue;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: larger;
+            border:2px solid black;
+
+
+        }
+       
+        .products_info{
+            border:0.2px solid black;
+            display:inline-block;
+            width:450px;
+            height:450px;
+            box-sizing:border-box;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:5px 5px 10px black;
+
+        }
+        .products_info h1{
+         display:inline-block;
+         background-color:cornflowerblue;
+         width:300px;
+         border-radius:15px;
+         box-shadow:5px 5px 10px inset black;
+         color:white;
+        text-transform: capitalize;
+
+        }
+        .products_info h1::first-letter{
+            color:red;
+            text-shadow:2px 1.2px  black;
+            font-size:55px;
+        }
+        .products_info h3 span{
+            font-weight: bold;
+            text-transform:capitalize;
+        
+
+        }
+        .products_info ::first-letter{
+            color:red;
+            font-size: larger;
+           
+            
+        }
+        p{
+            font-size: medium;
+            font-weight:bold;
+            
+        }
+        p::first-letter{
+            font-size: medium;
+            color:red;
+            font-size:larger;text-transform:capitalize;
+            
+        }
+        input{
+            border:0.3px solid black;
+            width:200px;
+            height:30px;
+            text-transform:capitalize;
+            border-radius:20px;
+            background-color:cornflowerblue;
+            color:white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight:bolder;
+            box-shadow:2px 2px 3px black;
+            transition-timing-function:ease;
+            transition-duration:0.5s;
+            margin-top:30px;
+          
+
+
+        }
+        input:hover{
+            background-color:black;
+            transition-duration:0.7s;
+            box-shadow:10px 5px 6px  cornflowerblue;
+            
+        }
+       
+
+        
+
+    </style>
+</head>
+
+<body>
+    {% extends 'cdheader.html' %}
+    {% block login %}
+<div class="alldetails">
+    <div>
+<form action="{% url 'selectproduct' %}" method="post">
+{% csrf_token %}
+<select id="products" name="product_name" onchange="this.form.submit()">
+    <option value="">select-product</option>
+    <option value="avm">AVM</option>
+    <option value="cleverworks">cleverworks</option>
+    <option value="bustime">Bustime</option>
+    <option value="clevercad">Cleve cad</option>
+    <option value="cleverreports">Clever reports</option>
+</select>
+</form>
+</div>
+<div class="products_info">
+
+   <center> <h1>product details</h1></center>
+    <h3><span>Name :</span>{{product_name}}</h3>
+    <br/>
+    <p><span>detail :</span>{{product_detail}}</p>
+    <br/>
+    <p><span>learning_percentage :</span> {{product_percentage}}</p>
+    <form action="{% url 'updateproduct' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="product_name" value="{{product_name}}">
+
+    
+    <center><input type="submit" value="update percentage"></center>
+    </form>
+</div>
+{% endblock %}
+    
+</body>
+</html>

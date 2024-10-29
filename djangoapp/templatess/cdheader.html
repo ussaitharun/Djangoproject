@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header h2{
+            box-sizing:border-box;
+            color:white;
+            margin-left:150px;
+            animation-name:title;
+            animation-duration:2s;
+            animation-timing-function:ease;
+            animation-fill-mode:forwards;
+            display:inline-block;
+        
+        
+            
+        }
+        header h2::first-letter{
+            color:red;
+            font-size:50px;
+            font-weight: bolder;
+            
+        }
+        header{
+            box-sizing: border-box;
+            border:2px solid black;
+            width:auto;
+            height:150px;
+            border-radius:10px;
+            background-color:rgb(70, 70, 168);
+            display:flex;
+        }
+        header li{
+            color:white;
+            display:inline-block;
+            margin-left:140px;
+            padding-left:30px;
+            box-sizing: border-box;
+            padding-top:30px;
+        
+            
+        }
+        @keyframes title {
+            70%{
+                opacity:0.3;
+                transform:scale(1.2);
+               
+                
+            }
+            90%{
+                transform: translateX(-100px);
+                
+            }
+            100%{
+                transform: translateX(-100px);
+                border-left:50px solid white;
+                border-bottom:25px solid white;
+                border-radius:2900px 370px;
+                padding-left:30px;
+                padding-right:100px;
+    
+            
+               
+        
+
+            }
+            
+        }
+        #login{
+            border:2px solid black;
+            display:inline-block;
+            width:400px;
+            border-radius:20px;
+            background-color:beige;
+            
+        
+        }
+        #login h2{
+            display:inline-block;
+            border:0.3px solid black;
+            width:200px;
+            color:white;
+            border-radius:20px;
+            background-color:rgb(70, 70, 168);
+            box-shadow:10px 10px 5px gray;
+        }
+        #login input{
+            color:white;
+            border-radius:20px;
+            background-color:rgb(70, 70, 168);
+
+        }
+        #login #submit{
+            width:100px;
+            font-size: larger;
+
+        }
+        a{
+            text-decoration:none;
+        }
+        footer{
+            border:0.3px solid black;
+            width:100%;
+            display:flex;
+            justify-content:space-around;
+            border-radius:10px;
+            background-color:rgb(70, 70, 168);
+            color:white;
+            box-sizing:border-box;
+        }
+        footer h3::first-letter{
+            color:red;
+            font-size:30px;
+        
+        }
+       li{
+        border-bottom:10px solid white;
+        width:100px;
+        padding-bottom:8px;
+        transform:ease;
+        transition-duration:0.3s;
+        
+
+       }
+       li:hover{
+        border-bottom-color:crimson;
+
+        transition-duration:0.2s;
+        transform:scale(1.1);
+        font-weight:bolder;
+        color:red;
+
+       }
+       li::first-letter{
+        color:red;
+        font-weight: bolder;
+       }
+       
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+        <center><h2>Clever Devices</h2></center>
+        </div>
+        <div>
+            <ul>
+           <a href="{% url 'loginpage' %}"> <li>Login</li></a>
+            <a href="{% url 'productpage' %}"><li>products</li></a>
+            <li>about us</li>
+            </ul>
+        </div>
+
+    </header>
+    <br/>
+    <br/>
+    {% block login %}
+    {% endblock %}
+    
+    </body>
+    </html>
